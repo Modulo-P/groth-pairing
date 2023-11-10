@@ -36,6 +36,13 @@ q = 2188824287183927522224640574525727508854836440041603434369820418657580849561
 
 Function `ecExp` is an efficient implementation of the exponential function on an elliptic curve, so that e.g. `ecExp p 5` is effectively equivalent to `p <> p <> p <> p <> p`.
 
+As a check, one can test that a constructed point `p` is on the elliptic curve with `isOnCurve p`,
+
+```haskell
+ghci> :t isOnCurve 
+isOnCurve :: Field a => EllipticCurve a -> Bool
+```
+
 ## Bilinearity
 
 It is expected that the pairing satisfies the **bilinearity** property:
