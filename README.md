@@ -5,7 +5,7 @@ Testing "pairing function" in the context of Elliptic Curves constructed using a
 Elliptic curves:
 
 - BN128 (file `BN128.hs`)
-- BLS12-381 (todo)
+- BLS12-381 (to do)
 
 ## Pairing function
 
@@ -21,8 +21,8 @@ where `Fp12` is the extended field according to the curve's embedding degree 'k 
 
 A point in G1 is constructed with `ecExp g1Gen n`:
 
-```shell
-*BN128> :t ecExp g1Gen
+```haskell
+ghci> :t ecExp g1Gen
 ecExp g1Gen :: Integer -> G1
 ```
 
