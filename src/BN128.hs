@@ -135,7 +135,7 @@ instance Field Fp6 where
   inv (Fp6 a0 a1 a2) = Fp6 c0 c1 c2
     where
       t0 = a0 * a0 * a0
-      t1 = (fromInteger 3) * a0 * a1 * a2 * nrp
+      t1 = 3 * a0 * a1 * a2 * nrp
       t2 = a1 * a1 * a1 * nrp
       t3 = a2 * a2 * a2 * (Fp2 80 18)
       factor = inv $ t0 - t1 + t2 + t3
@@ -184,8 +184,8 @@ instance Field a => Semigroup (EllipticCurve a) where
     | x1 == x2 && y1 == (negate y2) = Infty
     | x1 == x2 && y1 == y2          = let
            (x, y) = (x1, y1)
-           m  = (fromInteger 3) * (x * x) * (inv $ (fromInteger 2) * y)
-           x' = m * m - (fromInteger 2) * x
+           m  = 3 * (x * x) * (inv $ 2 * y)
+           x' = m * m - 2 * x
            y' = m * (x - x') - y
        in
            EC x' y'
@@ -213,7 +213,7 @@ g2Gen = EC (Fp2 0x1800deef121f1e76426a00665e5c4479674322d4f75edadd46debd5cd992f6
 -- BN128 curve must satisfy E1: y^2 = x^3 + 3 and E2: y^2 = x^3 + 3/(u+9)
 isOnCurve :: Field a => EllipticCurve a -> Bool
 isOnCurve Infty    = True
-isOnCurve (EC x y) = y^2 == x^3 + (fromInteger 3) * inv nrp
+isOnCurve (EC x y) = y^2 == x^3 + 3 * inv nrp
 
 
 -----------------------------------------------------------------------
@@ -250,12 +250,12 @@ millerGeneric bits (EC xP yP) (EC xQ yQ) = g1 * (inv g2)
 millerComb :: EllipticCurve Fp12 -> EllipticCurve Fp12                            -- point parameters
               -> Integer -> (Fp12, Fp12, Fp12, Fp12) -> (Fp12, Fp12, Fp12, Fp12)  -- accumulator function
 millerComb (EC xP yP) (EC xQ yQ) b (f1, f2, x, y) = 
-  let m   = ((fromInteger 3) * x * x) * (inv ((fromInteger 2) * y))
+  let m   = (3 * x * x) * (inv (2 * y))
       f1' = f1 * f1 * (yQ - y - m * (xQ - x))
-      f2' = f2 * f2 * (xQ + (fromInteger 2) * x - m * m)
-      x'  = m * m - (fromInteger 2) * x
+      f2' = f2 * f2 * (xQ + 2 * x - m * m)
+      x'  = m * m - 2 * x
       y'  = negate y - m * (x' - x)
-  in  if b == 0 || x' - xP == fromInteger 0
+  in  if b == 0 || x' - xP == 0
          then (f1', f2', x', y')
          else if b == 1
                  then let m'   = (y' - yP) * (inv (x' - xP))
