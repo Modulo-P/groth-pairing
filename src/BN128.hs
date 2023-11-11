@@ -222,6 +222,7 @@ isOnCurve (EC x y) = y^2 == x^3 + (fromInteger 3) * inv nrp
 
 -- | Untwist of point on E2 for pairing calculation
 untwist :: EllipticCurve Fp2 -> EllipticCurve Fp12
+untwist Infty      = Infty
 untwist (EC x2 y2) = EC x12 y12
   where
     cubicRoot = Fp6 0 1 0
@@ -278,7 +279,9 @@ type G2 = EllipticCurve Fp2  -- elliptic curve over Fp2
 
 -- | Pairing function
 pairing :: G1 -> G2 -> Fp12
-pairing p1 q2 = (fromInteger r_sign) * f_P_Q * (inv f_Q_P)
+pairing Infty _ = 1
+pairing _ Infty = 1
+pairing p1 q2   = (fromInteger r_sign) * f_P_Q * (inv f_Q_P)
   where
     f_P_Q   = miller' (embed p1) (untwist q2)
     f_Q_P   = miller' (untwist q2) (embed p1)
