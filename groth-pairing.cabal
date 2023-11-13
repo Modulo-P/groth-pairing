@@ -20,7 +20,7 @@ category:           ZKP
 extra-source-files: CHANGELOG.md
 
 library
-    exposed-modules:  BN128, MyLib
+    exposed-modules:  BLS12381, BN128, Utils, MyLib
 
     -- Modules included in this library but not exported.
     -- other-modules:
