@@ -30,8 +30,14 @@ Likewise, a point in G2 is constructed with `ecExp g2Gen n`.
 
 Here `n` is an integer between 0 and q, with
 
+- For BN128:
 ```
 q = 21888242871839275222246405745257275088548364400416034343698204186575808495617
+```
+
+- For BLS12-381:
+```
+q = 52435875175126190479447740508185965837690552500527637822603658699938581184513
 ```
 
 Function `ecExp` is an efficient implementation of the exponential function on an elliptic curve, so that e.g. `ecExp p 5` is effectively equivalent to `p <> p <> p <> p <> p`.
