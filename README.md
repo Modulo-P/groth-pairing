@@ -5,7 +5,7 @@ Testing "pairing function" in the context of Elliptic Curves constructed using a
 Elliptic curves:
 
 - BN128 (file `src/BN128.hs`)
-- BLS12-381 (to do)
+- BLS12-381 (file `src/BLS12381.hs`)
 
 ## Pairing function
 
