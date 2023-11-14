@@ -1,4 +1,4 @@
-cabal-version:      2.4
+cabal-version:      3.6
 name:               groth-pairing
 version:            0.1.0.0
 synopsis:           Elliptic curve pairing.
@@ -20,14 +20,14 @@ category:           ZKP
 extra-source-files: CHANGELOG.md
 
 library
-    exposed-modules:  BLS12381, BN128, Utils, MyLib
+    exposed-modules:  BLS12381, BN128, Utils, MyLib, Groth16.Proof
 
     -- Modules included in this library but not exported.
     -- other-modules:
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
-    build-depends:    base ^>=4.14.3.0
+    build-depends:    base ^>=4.17.2.0
     hs-source-dirs:   src
     default-language: Haskell2010
 
@@ -40,7 +40,7 @@ executable pairing
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
     build-depends:
-        base ^>=4.14.3.0,
+        base ^>=4.17.2.0,
         groth-pairing
 
     hs-source-dirs:   app
@@ -51,4 +51,4 @@ test-suite pairing-test
     type:             exitcode-stdio-1.0
     hs-source-dirs:   test
     main-is:          MyLibTest.hs
-    build-depends:    base ^>=4.14.3.0
+    build-depends:    base ^>=4.17.2.0
