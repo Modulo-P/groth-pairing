@@ -1,4 +1,4 @@
-cabal-version:      3.6
+cabal-version:      2.4
 name:               groth-pairing
 version:            0.1.0.0
 synopsis:           Elliptic curve pairing.
@@ -19,19 +19,29 @@ maintainer:         info@modulo-p.io
 category:           ZKP
 extra-source-files: CHANGELOG.md
 
+common common-all
+    build-depends:    
+        base ^>=4.14.3.0,
+        QuickCheck
+        --cabal-test-quickcheck >= 0.1,
+        --Cabal >= 3.6.2.0
+    default-language: Haskell2010
+
+
 library
-    exposed-modules:  BLS12381, BN128, Utils, MyLib, Groth16.Proof
+    import: common-all
+    exposed-modules:  BLS12381, BN128, Utils, MyLib
 
     -- Modules included in this library but not exported.
     -- other-modules:
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
-    build-depends:    base ^>=4.17.2.0
+
     hs-source-dirs:   src
-    default-language: Haskell2010
 
 executable pairing
+    import:           common-all
     main-is:          Main.hs
 
     -- Modules included in this executable, other than Main.
@@ -39,16 +49,24 @@ executable pairing
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
-    build-depends:
-        base ^>=4.17.2.0,
-        groth-pairing
 
     hs-source-dirs:   app
-    default-language: Haskell2010
 
-test-suite pairing-test
-    default-language: Haskell2010
+
+test-suite bilineal-property-381
+    import:           common-all
+    main-is:          bp381.hs
+    hs-source-dirs:   test, src
     type:             exitcode-stdio-1.0
-    hs-source-dirs:   test
-    main-is:          MyLibTest.hs
-    build-depends:    base ^>=4.17.2.0
+
+test-suite bilineal-property-128
+    import:           common-all
+    main-is:          bp128.hs
+    hs-source-dirs:   test, src
+    type:             exitcode-stdio-1.0
+    
+
+  
+
+
+    

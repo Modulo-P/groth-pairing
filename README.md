@@ -60,3 +60,15 @@ pairing (p1 <> p2) q == pairing p1 q * pairing p2 q
 ```haskell
 pairing p (q1 <> q2) == pairing p q1 * pairing p q2
 ```
+
+The test of the property can be checked for the BN-128 curve  with the following commands: 
+
+```bash
+cabal test bilineal-property-128
+```
+
+And the BLS12-381 curve:
+
+```bash
+cabal test bilineal-property-381
+```
