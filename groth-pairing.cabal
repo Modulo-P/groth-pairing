@@ -1,4 +1,4 @@
-cabal-version:      2.4
+cabal-version:      3.6
 name:               groth-pairing
 version:            0.1.0.0
 synopsis:           Elliptic curve pairing.
@@ -21,7 +21,7 @@ extra-source-files: CHANGELOG.md
 
 common common-all
     build-depends:    
-        base ^>=4.14.3.0,
+        base ^>=4.17.2.0,
         QuickCheck
         --cabal-test-quickcheck >= 0.1,
         --Cabal >= 3.6.2.0
@@ -30,7 +30,7 @@ common common-all
 
 library
     import: common-all
-    exposed-modules:  BLS12381, BN128, Utils, MyLib
+    exposed-modules:  BLS12381, BN128, Utils, Groth16.Proof
 
     -- Modules included in this library but not exported.
     -- other-modules:
