@@ -55,12 +55,14 @@ executable pairing
 
 test-suite bilineal-property-381
     import:           common-all
+    other-modules:    BLS12381
     main-is:          bp381.hs
     hs-source-dirs:   test, src
     type:             exitcode-stdio-1.0
 
 test-suite bilineal-property-128
     import:           common-all
+    other-modules:    BN128
     main-is:          bp128.hs
     hs-source-dirs:   test, src
     type:             exitcode-stdio-1.0
