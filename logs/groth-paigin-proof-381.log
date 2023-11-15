@@ -1,0 +1,13 @@
+$ cabal repl       
+In order, the following will be built (use -v for more details):
+ - groth-pairing-0.1.0.0 (lib) (file src/Groth16/Proof.hs changed)
+Preprocessing library for groth-pairing-0.1.0.0..
+GHCi, version 9.4.7: https://www.haskell.org/ghc/  :? for help
+[1 of 4] Compiling BLS12381         ( src/BLS12381.hs, interpreted )
+[2 of 4] Compiling BN128            ( src/BN128.hs, interpreted )
+[3 of 4] Compiling Groth16.Proof    ( src/Groth16/Proof.hs, interpreted )
+[4 of 4] Compiling Utils            ( src/Utils.hs, interpreted )
+Ok, four modules loaded.
+ghci> import Groth16.Proof 
+ghci> proof
+True
