@@ -75,4 +75,4 @@ cabal test bilineal-property-381
 
 ## ZK verification
 
-To check the viability using our pairing implementation in conjunction with an open source ZK tooling like [_snarkjs_](https://github.com/iden3/snarkjs), we test the validation of a proof produced by such a tool; see files in `src/Groth16`.
+To check the viability of using our pairing implementation in conjunction with an open source ZK tooling like [_snarkjs_](https://github.com/iden3/snarkjs), we test the validation of a proof produced by such a tool; see files in `src/Groth16` and corresponding log in directory `logs`.
